@@ -48,7 +48,6 @@ table {
 	border-spacing: 0;
 }
 
-/* Set every element's box-sizing to border-box */
 * {
     box-sizing: border-box;
 }
@@ -64,33 +63,6 @@ h1, h2, h3, h4, h5 {
     margin-bottom: 15px;
 }
 
-/* Copy and paste your work from yesterday here and start to refactor into flexbox */
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -114,37 +86,21 @@ table {
 	border-spacing: 0;
 }
 
-/* Set every element's box-sizing to border-box */
-* {
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
-    font-family: 'Titillium Web', sans-serif;
-}
-
-h1, h2, h3, h4, h5 {
-    font-family: 'Bangers', cursive;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-}
-
 .container {
   width: 880px;
-  /* TB LR */
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
 }
 
 /* header */
 header {
-	display: flex;
+    display: flex;
 }
+
 header nav {
-  /* display: inline-block; */
   display:flex;
   width: 691px;
-  /* vertical-align: top; */
   margin-top: 35px;
 }
 
@@ -175,9 +131,8 @@ header .logo {
 .cta {
 	display: flex;
 }
+
 .cta .cta-text {
-  /* display: inline-block; */
-  /* vertical-align: top; */
   display: flex;
   flex-direction: column;
   font-size: 77px;
@@ -203,9 +158,11 @@ header .logo {
 }
 
 .cta img {
-  /* display: inline-block; */
   margin-top: 69px;
+  display: block;
 }
+
+
 
 .main-content {
   border-top: 1px solid black;
@@ -221,7 +178,6 @@ header .logo {
 
 .main-content .top-content .text-content {
   width: 410px;
-  /* display: inline-block; */
   margin-right: 34px;
 }
 
@@ -242,7 +198,6 @@ header .logo {
 
 .main-content .bottom-content .text-content {
   width: 275px;
-  /* display: inline-block; */
   margin-right: 12px;
 }
 
@@ -262,7 +217,56 @@ header .logo {
 
 footer {
   margin: 32px 0;
-  text-align: center;
   font-size: 14px;
 }
 
+
+@media screen and (max-width: 800px) {
+    .container {
+        width: 90vw;
+    }
+    header {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    header nav{
+        justify-content: center;
+    }
+    .cta {
+        flex-direction: column;
+        align-items: center;
+    }
+    .cta img {
+        display: none;
+    }
+    .main-content img {
+        width: 88vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    header nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    header nav a {
+        width: 85vw;
+        text-align: center;
+        margin: 0;
+        padding: 3vh 0;
+        font-size: 20px;
+        color: lightgrey;
+        border-bottom: 1px solid black;
+    }
+    .main-content .top-content, .bottom-content {
+        flex-direction: column;
+    }
+    .main-content .top-content .text-content {
+        margin-top: 3vh;
+        width: 80vw;
+    }
+    .main-content .bottom-content .text-content {
+        margin-top: 3vh;
+        width: 80vw;
+    }
+}
